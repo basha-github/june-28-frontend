@@ -1,9 +1,39 @@
 //import React from 'react'
 
+import { FormEvent, useState } from "react";
+
 export default function AddEmp() {
+  const [userName, setUserName] = useState("");
+  const [orgName, setOrgName] = useState("");
+  const [salary, setSalary] = useState("");
+  const [phone, setPhone] = useState("");
+
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+
+    console.log("submit clicked....");
+    console.log(userName);
+    console.log(orgName);
+    console.log(salary);
+    console.log(phone);
+    
+  };
+  const getUserName = (e: any) => {
+    setUserName(e.target.value);
+    //console.log("hello");
+  };
+
+  const handleOrg = (e: any) => {
+    setOrgName(e.target.value);
+  };
+  const handleSalary = (e: any) => {
+    setSalary(e.target.value);
+  };
+  const handlePhone = (e: any) => {
+    setPhone(e.target.value);
+  };
   return (
     <div>
-
       <h2>Add New Employee</h2>
 
       <form>
@@ -12,6 +42,8 @@ export default function AddEmp() {
           <input
             name="userName"
             type="text"
+            value={userName}
+            onChange={getUserName}
             className="form-control"
             placeholder="enter user name"
           />
@@ -20,7 +52,9 @@ export default function AddEmp() {
           <label className="form-label">Organization Name</label>
           <input
             name="orgname"
+            value={orgName}
             type="text"
+            onChange={handleOrg}
             className="form-control"
             placeholder="enter org name"
           />
@@ -29,7 +63,9 @@ export default function AddEmp() {
           <label className="form-label">Salary</label>
           <input
             name="salary"
+            value={salary}
             type="number"
+            onChange={handleSalary}
             className="form-control"
             placeholder="enter salary"
           />
@@ -38,19 +74,19 @@ export default function AddEmp() {
           <label className="form-label">PhoneNumber</label>
           <input
             name="phone"
+            value={phone}
             type="text"
+            onChange={handlePhone}
             className="form-control"
             placeholder="enter user phone number"
           />
         </div>
         <div className="col-auto">
-          <button className="btn btn-primary mb-3">
+          <button onClick={handleSubmit} className="btn btn-primary mb-3">
             Submitt
           </button>
         </div>
-    </form>
-
-
+      </form>
     </div>
-  )
+  );
 }

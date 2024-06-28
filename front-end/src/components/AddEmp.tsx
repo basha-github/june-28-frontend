@@ -1,5 +1,6 @@
 //import React from 'react'
 
+import axios from "axios";
 import { FormEvent, useState } from "react";
 
 export default function AddEmp() {
@@ -16,6 +17,13 @@ export default function AddEmp() {
     console.log(orgName);
     console.log(salary);
     console.log(phone);
+
+    const empjson ={userName,orgName,salary,phone};
+
+    axios.post("http://localhost:9090/mtz/emp/add",empjson).then((res)=>{
+        console.log(res)
+    }
+    );
     
   };
   const getUserName = (e: any) => {
